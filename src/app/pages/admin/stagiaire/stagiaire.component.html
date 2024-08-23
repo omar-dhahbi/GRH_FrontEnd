@@ -1,0 +1,58 @@
+<div class="All" mat-subheader>All Stagiaires</div>
+
+<form #f="ngForm" class="d-none d-md-flex ms-4">
+  <input class="form-control border-0" type="search" (input)="search()" [(ngModel)]="searchStagiaire"
+    name="searchStagiaire" placeholder="Search">
+</form>
+
+<table id="myTable" class="text-center">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>telephone</th>
+      <th>Ecole</th>
+      <th>Type de stage</th>
+      <th>Niveau d'etude</th>
+      <th>Date de Début</th>
+      <th>Date de Fin</th>
+      <th>Sujet</th>
+      <th>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let stag of Array ;index as i">
+      <td>{{ stag.id }}</td>
+      <td>{{ stag.Nom }}</td>
+      <td>{{ stag.Prenom }}</td>
+      <td>{{ stag.telephone }}</td>
+      <td>{{ stag.Ecole }}</td>
+      <td style="white-space: nowrap;">{{ stag.TypeStage }}</td>
+      <td>{{ stag.NiveauEtude }}</td>
+      <td style="white-space: nowrap;">{{ stag.DateDebut }}</td>
+      <td style="white-space: nowrap;">{{ stag.DateFin }}</td>
+      <td style="white-space: nowrap;">{{ stag.sujet }}</td>
+      <td>
+        <div class="d-flex">
+          <a class="btn btn-sm btn-warning me-1" routerLink="/admin/updateStagiare/{{ stag.id }}">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </a>
+          <button class="btn btn-sm btn-danger" type="button" (click)="deleteStag(stag.id,i)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>&nbsp;
+          <a class="btn btn-sm btn-primary me-1" (click)="detail(stag.id)">
+            <i class="fa fa-info" aria-hidden="true"></i>
+          </a>
+
+
+
+        </div>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+<div class="container text-center mt20">
+  <button mat-raised-button color="primary" routerLink="/admin/AddStagiaire">Add New Stagiares</button>
+</div>

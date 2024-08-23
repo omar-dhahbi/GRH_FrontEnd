@@ -1,0 +1,39 @@
+<mat-card>
+  <h1 style="margin: 20px;">Add New Projet</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form (ngSubmit)="updateProjet()">
+          <mat-form-field appearance="outline" class="w100 mt20">
+            <mat-label>Employé</mat-label>
+            <mat-select name="nom" [(ngModel)]="data.user_id">
+              <mat-option *ngFor="let Employe of employee" [value]="Employe.id">
+                {{ Employe.nom}} {{ Employe.prenom }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="w100" appearance="outline" class="mt20 w100">
+            <mat-label>Nom de Projet</mat-label>
+            <input [(ngModel)]="data.NomProjets" type="text" #NomProjets="ngModel" name="NomProjets"
+              placeholder="Entrez ici ..." matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="mt20 w100">
+            <mat-label>Raison Sociale</mat-label>
+            <mat-select name="Raisonsociale" [(ngModel)]="data.client_id">
+              <mat-option *ngFor="let c of client" [value]="c.id">
+                {{ c. RaisonSociale}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="container text-center mb20">
+            <button type="submit" cl mat-raised-button color="primary">Update</button>
+            <button class="ml20" mat-raised-button color="Warn">close</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>

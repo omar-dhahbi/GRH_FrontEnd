@@ -1,0 +1,33 @@
+<div class="All" mat-subheader>All Projets</div>
+
+<form #f="ngForm" class="d-none d-md-flex ms-4">
+  <input class="form-control border-0" [(ngModel)]="searchProjet" type="search" (input)="search()" name="searchProjet"
+    placeholder="Search">
+</form>
+<table id="myTable" class="text-center">
+  <thead>
+    <tr>
+      <th> #</th>
+      <th>Employé</th>
+      <th> Nom de projet</th>
+      <th> Client</th>
+      <th> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let projet of Array  ;index as i">
+      <td>{{ projet.id }}</td>
+      <td>{{ projet.Nom }} {{ projet.Prenom }}</td>
+      <td>{{ projet.NomProjets }}</td>
+      <td>{{ projet.RaisonSociale }}</td>
+      <td>&nbsp;
+        <a class="btn btn-sm btn-warning" routerLink="/admin/updateProjet/{{ projet.id }}"><i class="fa fa-pencil"
+            aria-hidden="true"></i></a>&nbsp;
+        <button class="btn btn-sm btn-danger" type="button" (click)="deleteProjet(projet.id,i)"><i class="fa fa-trash"
+            aria-hidden="true"></i></button>
+      </td>
+  </tbody>
+</table>
+<div class="container text-center mt20">
+  <button mat-raised-button color="primary" routerLink="/admin/AddProjet">Add New Projet</button>
+</div>

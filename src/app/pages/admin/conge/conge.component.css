@@ -1,0 +1,52 @@
+table {
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: 150px;
+}
+
+.divTables {
+  margin-left: 150px;
+  display: block;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.nav-tabs {
+  margin-left: 200px;
+  margin-top: 100px;
+
+}
+
+input {
+  width: 16%;
+  margin-top: 20px;
+  margin-left: 742px;
+  margin-bottom: 4px;
+}
+
+.All {
+  font-weight: bold;
+  text-align: center;
+}
+
+.button {
+  text-decoration: none;
+  border: none;
+}
+
+.buttonx {
+  text-decoration: none;
+  border: 0;
+  /* margin-top: 15px; */
+  margin: auto 0;
+  color: #337ab7;
+}

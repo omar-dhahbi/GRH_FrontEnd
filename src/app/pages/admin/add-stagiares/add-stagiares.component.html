@@ -1,0 +1,119 @@
+<mat-card>
+  <h1 style="margin: 20px;">Add New Stagiaire</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form (ngSubmit)="AddStagiaire()" #f="ngForm">
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Cin</mat-label>
+            <input required [(ngModel)]="stagiaire.Cin" type="text" #Cin="ngModel" name="Cin" autofocus
+               placeholder="Entrez ici ..." matInput>
+            <!-- <mat-error *ngIf="Cin.errors && (Cin.invalid || Cin.touched)">
+              <span *ngIf="Cin.errors?.['required']">Cin is required</span>
+              <span *ngIf="Cin.errors?.['pattern']">Cin Is be must be 8 number</span>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="w100 mt20" appearance="fill">
+            <mat-label>Nom</mat-label>
+            <input required [(ngModel)]="stagiaire.Nom" type="text" #Nom="ngModel" name="Nom"
+              minlength="3" required placeholder="Entrez ici ..." matInput>
+            <!-- <mat-error *ngIf="Nom.errors && (Nom.invalid || Nom.touched)">
+              <span *ngIf="Nom.errors?.['required']">Nom is required</span>
+              <span *ngIf="Nom.errors?.['pattern']">Nom Is be must be alphabitique</span>
+              <span *ngIf="Nom.errors?.['minlength']">Nom Is be 3 carectere</span>
+
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="w100 mt20" appearance="fill">
+            <mat-label>Prénom</mat-label>
+            <input required [(ngModel)]="stagiaire.Prenom" type="text" #Prenom="ngModel" name="Prenom" minlength="3"
+              required placeholder="Entrez ici ..." matInput>
+            <!-- <mat-error *ngIf="Prenom.errors && (Prenom.invalid || Prenom.touched)">
+              <span *ngIf="Prenom.errors?.['required']">Prenom is required</span>
+              <span *ngIf="Prenom.errors?.['pattern']">Prenom Is be must be alphabitique</span>
+              <span *ngIf="Prenom.errors?.['minlength']">Prenom Is be 3 carectere</span>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="w100 mt20" appearance="fill">
+            <mat-label>telephone</mat-label>
+            <input required [(ngModel)]="stagiaire.telephone" type="text" #telephone="ngModel" name="telephone"
+              pattern="^\d{8}$" placeholder="Entrez ici ..." matInput>
+            <mat-error *ngIf="telephone.errors && (telephone.invalid || telephone.touched)">
+              <!-- <span *ngIf="telephone.errors?.['required']">telephone is required</span> -->
+              <span *ngIf="telephone.errors?.['pattern']">telephone Is be must be 8 number</span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w100 mt20" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input required [(ngModel)]="stagiaire.Email" type="email" #Email="ngModel" name="Email" email="true"
+              placeholder="Entrez ici ..." matInput>
+            <!-- <mat-error *ngIf="Email.errors && (Email.invalid || Email.touched)">
+              <span *ngIf="Email.errors?.['required']">Email is required</span>
+              <span *ngIf="Email.errors?.['email']">Email Is not Valid</span>
+            </mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field class="w100 mt20" appearance="fill">
+            <mat-label>Ecole</mat-label>
+            <input required [(ngModel)]="stagiaire.Ecole" type="text" #Ecole="ngModel" name="Ecole"
+              minlength="3" placeholder="Entrez ici ..." matInput>
+            <!-- <mat-error *ngIf="Ecole.errors && (Ecole.invalid || Ecole.touched)">
+              <span *ngIf="Ecole.errors?.['pattern']">Ecole Is be must be alphabitique</span>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-radio-group aria-label="Select an option" required class="mt20 mb20" [(ngModel)]="stagiaire.NiveauEtude"
+            name="niveauEtude" required>
+            <mat-radio-button *ngFor="let niveauEtude of niveauEtude" [value]="niveauEtude">{{ niveauEtude }}
+            </mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field appearance="fill" class="mt20 w100">
+            <mat-label>Type de Stage</mat-label>
+            <mat-select name="TypeStage" [(ngModel)]="stagiaire.TypeStage" required (selectionChange)="onTypeStageChange($event)">
+              <mat-option *ngFor="let Type of typeStage" [value]="Type">
+                {{ Type}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="mt20 w100">
+            <mat-label>Classe</mat-label>
+            <mat-select name="class" [(ngModel)]="stagiaire.class" required>
+              <mat-option *ngFor="let class of class" [value]="class">
+                {{ class}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <input type="date" min="2023-01-01" name="DateDebut" required class="form-control w100"
+            style="margin-top: 10px;" [(ngModel)]="stagiaire.DateDebut">
+          <input type="date" [min]="stagiaire.DateDebut" class="form-control w100" style="margin-top: 10px;"
+            name="DateFin" required [(ngModel)]="stagiaire.DateFin">
+          <mat-form-field class="w100 mt20" appearance="fill">
+            <mat-label>sujet</mat-label>
+            <input required [(ngModel)]="stagiaire.sujet" type="text" #sujet="ngModel" name="sujet" minlength="8"
+              placeholder="Entrez ici ..." matInput>
+            <!-- <mat-error *ngIf="sujet.errors && (sujet.invalid || sujet.touched)">
+              <span *ngIf="sujet.errors?.['required']">sujet is required</span>
+              <span *ngIf="sujet.errors?.['pattern']">sujet Is be must be alphabitique</span>
+              <span *ngIf="sujet.errors?.['minlength']">sujet Is be 8 carectere</span>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>DescriptionSujet</mat-label>
+            <textarea type="text" name="DescriptionSujet" rows="10" matInput [(ngModel)]="stagiaire.DescriptionSujet"
+              minlength="12" required #DescriptionSujet="ngModel"
+              placeholder="Enter Description sujet "></textarea>
+            <!-- <mat-error *ngIf="DescriptionSujet.errors && (DescriptionSujet.invalid || DescriptionSujet.touched)">
+              <span *ngIf="DescriptionSujet.errors?.['required']">DescriptionSujet is required</span>
+              <span *ngIf="DescriptionSujet.errors?.['pattern']">DescriptionSujet Is be must be alphabitique</span>
+              <span *ngIf="DescriptionSujet.errors?.['minlength']">DescriptionSujet Is be 12 carectere</span>
+            </mat-error> -->
+          </mat-form-field>
+          <div class="container text-center mb20">
+            <button type="submit" mat-raised-button color="primary">Add</button>
+            <button class="ml20" mat-raised-button color="Warn" (click)="close()">close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,76 @@
+<div class="divTables">
+
+
+  <div class="All" mat-subheader>
+    LISTE DES CONGÉS
+  </div>
+
+  <ul class="nav nav-tabs mb-3" id="ex1" role="tablist" style="margin-right: 300px;">
+    <li class="nav-item" role="presentation">
+      <button [class]="button1" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab"
+        aria-controls="ex1-tabs-1" aria-selected="false" (click)="buttonTab('attente')"><i
+          class="material-icons">refresh</i>CONGÉS EN ATTENTE</button>
+
+    </li>
+    <li class="nav-item" role="presentation">
+      <button [class]="button2" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab"
+        (click)="buttonTab('accepter')" aria-controls="ex1-tabs-2" aria-selected="true"><i
+          class="material-icons">check</i>CONGÉS ACCEPTÉS</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button [class]="button3" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab"
+        (click)="buttonTab('refuser')" aria-controls="ex1-tabs-3" aria-selected="false"><i
+          class="material-icons">close</i>CONGÉS REFUSÉS</button>
+    </li>
+  </ul>
+  <form #f="ngForm">
+    <input class="form-control border-0" type="search" name="searchConge" placeholder="Search" [(ngModel)]="searchConge"
+    (input)="search()">
+  </form>
+
+  <table id="" class="text-center">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Employé</th>
+        <th>Type de congé</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Nombre de jours</th>
+        <th>Cause de congés</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let conge of tabConge">
+        <td>{{ conge.id }} </td>
+        <td style="white-space: nowrap;">{{ conge.nom }} {{ conge.prenom }}</td>
+        <td>{{ conge.type }} </td>
+        <td style="white-space: nowrap;">{{ conge.DateDebut }} </td>
+        <td style="white-space: nowrap;">{{ conge.DateFin }} </td>
+        <td>{{ conge.NbrJour }} </td>
+        <td>
+          <div *ngIf="conge.type === 'simple'">{{ conge.CauseConge }}</div>
+          <div *ngIf="conge.type === 'Maladie'">
+            <button (click)="ouvrirphoto(conge.photo)" class="buttonx">
+              <span style="font-weight: bold">Voir Certificat </span>
+            </button>
+          </div>
+        </td>
+        <td>
+          <div style="white-space: nowrap;">
+            <button class="button" (click)="refuser(conge.id)" [disabled]="button3 !== 'active'"
+              [disabled]="button1 === 'active'">
+              <i class="material-icons text-danger" *ngIf="conge.status !== 'accepter'">cancel</i>
+            </button>
+            <button class="button" (click)="accepter(conge.id)" [disabled]="button2 !== 'active'"
+              [disabled]="button1 === 'active'">
+              <i class="material-icons text-success" *ngIf="conge.status !== 'refuser'">check_circle</i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

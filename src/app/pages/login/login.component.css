@@ -1,0 +1,19 @@
+.full-width {
+  width: 90%;
+}
+.container.text-center.mb20 a {
+  color: #000;
+  font-size: 14px;
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: right;
+  display: block;
+}
+
+.container.text-center.mb20 {
+  margin-top: 2px;
+}
+
+.container.text-center.mb20 a:hover {
+  text-decoration: underline;
+}

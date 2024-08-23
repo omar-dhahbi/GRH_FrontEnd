@@ -1,0 +1,43 @@
+<div class="All" mat-subheader>All Clients</div>
+
+<form #f="ngForm" class="d-none d-md-flex ms-4">
+  <input class="form-control border-0" [(ngModel)]="contrat_id" type="search" (input)="search()" name="contrat_id"
+    placeholder="Search">
+</form>
+
+<table id="myTable" class="text-center">
+  <thead>
+    <tr>
+      <th> #</th>
+      <th>Employee</th>
+      <th> Type de contrat</th>
+      <th> Date Debut</th>
+      <th> Date Fin</th>
+      <th> Contrat</th>
+      <th> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let contrat of Array">
+      <td>{{ contrat.id }}</td>
+      <td>{{ contrat.nom }} {{ contrat.prenom }}</td>
+      <td>{{ contrat.NomContrat }}</td>
+      <td>{{ contrat.DateDebut }}</td>
+      <td>{{ contrat.DateFin }}</td>
+      <td>
+        <button (click)="ouvrirPdf(contrat.url)" class="button">
+          <span style="font-weight: bold">Voir contrat</span>
+        </button>
+      </td>
+      <td>&nbsp;
+        <a class="btn btn-sm btn-warning" routerLink="/admin/updateContrat/{{ contrat.id }}"><i class="fa fa-pencil"
+            aria-hidden="true"></i></a>&nbsp;
+        <button class="btn btn-sm btn-danger" type="button"><i class="fa fa-trash" aria-hidden="true"
+            (click)="deleteContrat(contrat.id)"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="container text-center mt20">
+  <button mat-raised-button color="primary" routerLink="/admin/AddContrat">Add New contrat</button>
+</div>

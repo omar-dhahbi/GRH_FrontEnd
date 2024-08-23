@@ -1,0 +1,63 @@
+<mat-card>
+  <h1 style="margin:20px">Update Departement</h1>
+  <mat-card-content class="text-center">
+    <div class="bootstrap-wrapper">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <form #f="ngForm" (ngSubmit)="updateUser()">
+            <div>
+              <img [src]="img" class="imgUpload" />
+            </div>
+            <div class="mb-3">
+              <input type="file" id="formFile" name="photo" [(ngModel)]="data.photo" id="formFile"
+                (change)="uploadImage($event)" #photo="ngModel" accept=".png, .jpg, .jpeg" class="form-control">
+            </div>
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>cin</mat-label>
+              <input type="text" name="cin" #cin="ngModel" matInput placeholder="Enter Here" [(ngModel)]="data.cin"
+               >
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>nom</mat-label>
+              <input type="text" pattern="[a-zA-Z ]*" name="nom" matInput placeholder="Enter Here"
+                [(ngModel)]="data.nom" #nom="ngModel">
+
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>prenom</mat-label>
+              <input type="text" matInput placeholder="Enter Here" pattern="[a-zA-Z ]*" name="prenom" #prenom="ngModel"
+                [(ngModel)]="data.prenom" required>
+
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>Phone number</mat-label>
+              <input type="tel" matInput placeholder="Enter Here" name="tel" #tel="ngModel"
+                [(ngModel)]="data.tel" required>
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>email</mat-label>
+              <input type="email" matInput placeholder="Enter Here" email="true" #email="ngModel" name="email"
+                [(ngModel)]="data.email" required>
+            </mat-form-field>
+
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>Raison Sociale</mat-label>
+              <input type="text" matInput placeholder="Enter Here" name="RaisonSociale" [disabled]="true"
+                [(ngModel)]="data.RaisonSociale">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="fill">
+              <mat-label>Role</mat-label>
+              <input type="text" matInput placeholder="Enter Here" name="role" [disabled]="true"
+                [(ngModel)]="data.role">
+            </mat-form-field>
+            <div class="container text-center mb20">
+              <button type="submit" mat-raised-button color="primary">Update</button>
+              <button class="ml20" mat-raised-button color="Warn" (click)="close()">close</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

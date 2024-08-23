@@ -1,0 +1,44 @@
+<div class="All" mat-subheader>All Clients</div>
+
+<form #f="ngForm" class="d-none d-md-flex ms-4">
+  <input class="form-control border-0" [(ngModel)]="searchClient" type="search" (input)="search()" name="searchClient"
+    placeholder="Search">
+</form>
+
+<table id="myTable" class="text-center">
+  <thead>
+    <tr>
+      <th> #</th>
+      <th>Raison Sociale</th>
+      <th> Logo</th>
+      <th> Telephone</th>
+      <th> Site</th>
+      <th> Email</th>
+      <th> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr style="text-align: center;" *ngFor="let client of Array;index  as i">
+      <td>{{ client.id }}</td>
+      <td>{{ client.RaisonSociale }}</td>
+      <td><img [src]="imageDirectoryPath+client.photo" class="imgClient"></td>
+      <td>{{ client.Telephone }}</td>
+      <td>
+        <a href="{{ client.Site }}" target="_blank" class="text-primary">{{ client.Site }}</a>
+      </td>
+
+      <!-- <td>{{ client.Site }}</td> -->
+      <td>{{ client.email }}</td>
+      <td>&nbsp;
+        <a class="btn btn-sm btn-warning" routerLink="/admin/updateClient/{{ client.id }}"><i class="fa fa-pencil"
+            aria-hidden="true"></i></a>&nbsp;
+        <button class="btn btn-sm btn-danger" type="button" (click)="deleteClient(client.id,i)"><i class="fa fa-trash"
+            aria-hidden="true"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="container text-center mt20">
+  <button mat-raised-button color="primary" routerLink="/admin/AddClient">Add New Client</button>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row mt20">
+        <div class="col-md-6 offset-md-3 mt20">
+          <mat-card>
+            <div class="container text-center">
+              <img src="../../../assets/pic.webp" alt="">
+            </div>
+            <h1 class="text-center">Login Here !!</h1>
+            <form class="text-center" LoginForm="ngForm" (ngSubmit)="Login()">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>email</mat-label>
+                <input type="email" matInput placeholder="Enter Here" email="true" #email="ngModel" name="email"
+                  [(ngModel)]="user.email" required>
+                <mat-error *ngIf="email.errors && (email.invalid || email.touched)">
+                  <span *ngIf="email.errors?.['email']">his email address is not valid.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>password</mat-label>
+                <input type="password" matInput placeholder="Enter Here" name="password" [(ngModel)]="user.password"
+                  #password="ngModel" required>
+                <mat-error *ngIf="password.errors && (password.invalid || password.touched)">
+                  <span *ngIf="password.errors?.['required']">password is required</span>
+                </mat-error>
+              </mat-form-field>
+
+              <div class="container text-center mb20">
+                <a mat-button routerLink="/forgetPassword">Mot de passe oublié ?</a>
+              </div>
+              <div class="container text-center" style="margin-bottom: 50px;">
+                <button type="submit" mat-raised-button color="primary">Connexion</button>
+
+              </div>
+            </form>
+          </mat-card>
+
+        </div>
+      </div>
+    </div>
+  </div>

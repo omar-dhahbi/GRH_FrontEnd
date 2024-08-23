@@ -1,0 +1,39 @@
+table {
+  border-collapse: collapse;
+  width: 70% ;
+  margin-left: 150px;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+.imguser{
+  max-width: 50px;
+  max-height: 100px;
+  border-radius: 50%;
+}
+.button {
+  text-decoration: none;
+  border: none;
+  margin:auto ;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+ input{
+  width: 16%;
+  margin-left: 800px;
+}
+.All{
+  font-weight: bold;
+  text-align: center;
+}
+.user{
+  margin-top: 400px;
+}
+

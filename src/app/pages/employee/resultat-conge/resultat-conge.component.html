@@ -1,0 +1,47 @@
+<div class="All" mat-subheader>Mes Congés</div>
+<form #f="ngForm" class="d-none d-md-flex ms-4">
+  <input class="form-control border-0" type="search" name="EnterSearch" placeholder="Search">
+</form>
+<table id="myTable" class="text-center">
+  <thead>
+    <tr>
+      <th>Employé</th>
+      <th>Type de congé</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Nombre de jours</th>
+      <th>Cause de congés</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let conge of Array">
+      <td>{{ user.nom }} {{ user.prenom }}</td>
+      <td>{{ conge.type }} </td>
+      <td>{{ conge.DateDebut }} </td>
+      <td>{{ conge.DateFin }} </td>
+      <td>{{ conge.NbrJour }} </td>
+      <td>
+        <div *ngIf="conge.type === 'simple'">{{ conge.CauseConge }}</div>
+        <div *ngIf="conge.type === 'Maladie'">
+          <button (click)="ouvrirphoto(conge.photo)" class="buttonx">
+            <span style="font-weight: bold">Voir Certificat </span>
+          </button>
+        </div>
+      </td>
+      <td>
+        <ng-container *ngIf="conge.status === 'accepter'">
+          <i class="material-icons text-success">check_circle</i>
+        </ng-container>
+        <ng-container *ngIf="conge.status === 'refuser'">
+          <i class="material-icons text-danger">cancel</i>
+        </ng-container>
+        <ng-container *ngIf="conge.status === 'attente'">
+          <i class="fa fa-clock-o text-warning"></i>
+        </ng-container>
+
+      </td>
+
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,84 @@
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-users" aria-hidden="true" [ngClass]="'text-primary'" [style.fontWeight]="'bold'"></i>
+        <div class="ms-3">
+          <h3 class="mb-2">Users</h3>
+          <h5 class="mb-0" style="font-weight: bold;">{{ count }}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-building-o" aria-hidden="true" [ngClass]="'text-primary'" [style.fontWeight]="'bold'"></i>
+        <div class="ms-3">
+          <h3 class="mb-2">Departements</h3>
+          <h5 class="mb-0" style="font-weight: bold;">{{ dept_id }}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-calendar" aria-hidden="true" [ngClass]="'text-primary'" [style.fontWeight]="'bold'"></i>
+        <div class="ms-3">
+          <h3 class="mb-2">Projets</h3>
+          <h5 class="mb-0" style="font-weight: bold;">{{ projet_id }}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-user-plus" aria-hidden="true" [ngClass]="'text-primary'" [style.fontWeight]="'bold'"></i>
+        <div class="ms-3">
+          <h3 class="mb-2">Clients</h3>
+          <h5 class="mb-0" style="font-weight: bold;">{{ client_id }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div class="All" mat-subheader>All Users</div>
+<form #f="ngForm" class="d-none d-md-flex ms-4">
+  <input class="form-control border-0" [(ngModel)]="searchUsers" type="search" name="EnterSearch" placeholder="Search"
+    (input)="search()">
+</form>
+<table id="myTable" class="text-center">
+  <thead>
+    <tr class="text-center">
+
+
+      <th>nom</th>
+      <th>prenom</th>
+      <th> telephone</th>
+      <th> email</th>
+      <th> photo</th>
+      <th> departement</th>
+      <th> status</th>
+      <th> Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let user of employee">
+      <td>{{ user.nom }}</td>
+      <td>{{ user.prenom }}</td>
+      <td>{{ user.tel }}</td>
+      <td>{{ user.email }}</td>
+      <td><img [src]="'http://127.0.0.1:8000/public/'+user.photo" class="imguser"></td>
+      <td>{{ user.Titre }}</td>
+      <td><button mat-raised-button color="primary" style="width: 70%;"
+          (click)="activerDesactiver(user.status,user.id)">{{valueButton(user.status)}}</button></td>
+
+      <td> <a class="btn btn-sm btn-primary me-1" (click)="detail(user.id)">
+          <i class="fa fa-info" aria-hidden="true"></i>
+        </a>
+        <a class="btn btn-sm btn-warning me-1" routerLink="/admin/updateUser/{{ user.id }}">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </a>
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>

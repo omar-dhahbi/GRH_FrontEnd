@@ -1,0 +1,32 @@
+<div class="All" mat-subheader>All Departements</div>
+<form #f="ngForm" class="d-none d-md-flex ms-4">
+  <input class="form-control border-0" [(ngModel)]="searchDepartement" type="search" (input)="search()"
+    name="searchDepartement" placeholder="Search">
+</form>
+<table id="myTable" class="text-center">
+  <thead>
+    <tr>
+      <th> #</th>
+      <th>Titre</th>
+      <th> Description</th>
+      <th> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let dept of Array ;index as i">
+      <td>{{ dept.id }}</td>
+      <td>{{ dept.Titre }}</td>
+      <td style="text-align: start;">{{ dept.Description }}</td>
+      <td>&nbsp;
+        <div class="d-flex" style="margin-bottom: 30px;">
+          <a class="btn btn-sm btn-warning" routerLink="/admin/updateDepartement/{{ dept.id }}"><i class="fa fa-pencil"
+              aria-hidden="true"></i></a>&nbsp;
+          <button class="btn btn-sm btn-danger" type="button" (click)="deleteDept(dept.id,i)"><i class="fa fa-trash"
+              aria-hidden="true"></i></button>
+        </div>
+      </td>
+  </tbody>
+</table>
+<div class="container text-center mt20">
+  <button mat-raised-button color="primary" routerLink="/admin/Add-Departement">Add New Departement</button>
+</div>

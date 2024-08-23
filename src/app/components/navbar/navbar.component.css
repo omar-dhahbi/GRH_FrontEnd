@@ -1,0 +1,10 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.imgCirecrulaire {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+

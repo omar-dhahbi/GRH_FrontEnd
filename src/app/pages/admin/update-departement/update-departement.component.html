@@ -1,0 +1,27 @@
+<mat-card>
+  <h1 style="margin:20px">Update Departement</h1>
+  <mat-card-content class="text-center">
+    <div class="bootstrap-wrapper">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <form #f="ngForm" (ngSubmit)="updateData()">
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Titre</mat-label>
+              <input type="text" name="Titre" matInput placeholder="Enter Here" required [(ngModel)]="data.Titre"
+                #Titre="ngModel">
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea type="text" name="Description" rows="15" matInput [(ngModel)]="data.Description" required
+                #Description="ngModel" placeholder="Enter Departement Description"></textarea>
+            </mat-form-field>
+            <div class="container text-center mb20">
+              <button type="submit" mat-raised-button color="primary">Update</button>
+              <button class="ml20" mat-raised-button color="Warn" (click)="close()">close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

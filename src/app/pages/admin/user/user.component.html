@@ -1,0 +1,99 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row mt20">
+      <div class="col-md-6 offset-md-3">
+        <mat-card>
+          <div class="container text-center">
+            <img src="../../../assets/pic.webp" alt=""style="width: 50px; height: 50px;" class="mt20">
+          </div>
+          <h1 class="text-center">Ajouter des utilisateur!!</h1>
+          <form class="text-center" signupForm="ngForm" (ngSubmit)="signup()">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>cin</mat-label>
+              <input type="text" name="cin" #cin="ngModel" matInput placeholder="Enter Here" [(ngModel)]="user.cin"
+                required>
+              <!-- <mat-error *ngIf="cin.errors && (cin.invalid || cin.touched)">
+                <span *ngIf="cin.errors?.['pattern']">cin Is be must be 8 number</span>
+              </mat-error> -->
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>nom</mat-label>
+              <input type="text" name="nom" matInput placeholder="Enter Here"
+                [(ngModel)]="user.nom" #nom="ngModel" required>
+              <!-- <mat-error *ngIf="nom.errors && (nom.invalid || nom.touched)">
+                <span *ngIf="nom.errors?.['pattern']">nom be must alphabitique</span>
+              </mat-error> -->
+
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>prenom</mat-label>
+              <input type="text" matInput placeholder="Enter Here" name="prenom" #prenom="ngModel"
+                [(ngModel)]="user.prenom" required>
+              <!-- <mat-error *ngIf="prenom.errors && (prenom.invalid || prenom.touched)">
+                <span *ngIf="prenom.errors?.['pattern']">prenom be must alphabitique</span>
+              </mat-error> -->
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Phone number</mat-label>
+              <input type="text" matInput placeholder="Enter Here" name="tel" #tel="ngModel" pattern="^\d{8}$"
+                [(ngModel)]="user.tel" required>
+
+
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>email</mat-label>
+              <input type="email" matInput placeholder="Enter Here" email="true" #email="ngModel" name="email"
+                [(ngModel)]="user.email" required>
+
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>password</mat-label>
+              <input type="password" matInput placeholder="Enter Here" name="password" [(ngModel)]="user.password"
+                #password="ngModel" required >
+
+
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>confirmation password</mat-label>
+              <input type="password" matInput placeholder="Enter Here" name="password_confirmation"
+                pattern="{{ user.password }}" #password_confirmation="ngModel" [(ngModel)]="user.password_confirmation"
+                required>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>adresse</mat-label>
+              <input type="text" matInput placeholder="Enter Here" #adresse="ngModel" name="adresse"
+                [(ngModel)]="user.adresse" required>
+
+            </mat-form-field>
+            <br>
+            <input type="file" class="form-control full-width" [class.is-invalid]="photo.invalid && photo.touched"
+              style="margin-left: 25px;" name="photo" required (change)="uploadImage($event)" required
+              [(ngModel)]="user.photo" #photo="ngModel" accept=".png, .jpg, .jpeg">
+            <br>
+            <mat-form-field appearance="outline" class="mt20 full-width">
+              <mat-label>Departement</mat-label>
+              <mat-select name="departement_id" [(ngModel)]="user.departement_id" requird>
+                <mat-option *ngFor="let d of departement_id" [value]="d.id">
+                  {{ d. Titre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Raison Sociale</mat-label>
+              <input type="text" matInput placeholder="Enter Here" name="RaisonSociale" [disabled]="true"
+                [value]="user.RaisonSociale">
+
+            </mat-form-field>
+
+            <div class="container text-center mb20">
+              <button type="submit" mat-raised-button color="primary">Register</button>
+              <button class="ml20" mat-raised-button color="accent" (click)="close()">Close</button>
+
+            </div>
+          </form>
+        </mat-card>
+      </div>
+
+    </div>
+  </div>
+</div>
